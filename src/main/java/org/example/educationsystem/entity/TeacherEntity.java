@@ -1,11 +1,13 @@
 package org.example.educationsystem.entity;
 
 import jakarta.persistence.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 
 @Entity
+@SuperBuilder
 @Table(name = "teachers")
 public class TeacherEntity {
 
@@ -22,7 +24,7 @@ public class TeacherEntity {
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
-    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "teacher" ,fetch = FetchType.LAZY)
     private List<ScheduleEntity> schedule;
 
     public TeacherEntity() {

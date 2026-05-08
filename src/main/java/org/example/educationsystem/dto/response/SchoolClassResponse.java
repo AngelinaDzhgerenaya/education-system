@@ -1,10 +1,11 @@
 package org.example.educationsystem.dto.response;
 
+import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 import org.example.educationsystem.entity.SchoolClassEntity;
 
 
-
+@Getter
 @SuperBuilder
 public class SchoolClassResponse {
 

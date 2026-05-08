@@ -2,11 +2,15 @@ package org.example.educationsystem.entity;
 
 
 import jakarta.persistence.*;
-import org.example.educationsystem.enums.DayOfWeek;
+import lombok.experimental.SuperBuilder;
 
+
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
+@SuperBuilder
 @Table(name = "schedules")
 public class ScheduleEntity {
     @Id
@@ -16,18 +20,20 @@ public class ScheduleEntity {
     @Column(name = "subject", nullable = false, length = 50)
     private String subject;
 
+    @Column(name = "date", nullable = false, length = 50)
+    private LocalDate date;
 
     @Column(name = "day_of_week", nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private DayOfWeek dayOfWeek;
 
-    @Column(name = "start_time", nullable = false, length = 50)
+    @Column(name = "start_time", nullable = false, length = 10)
     private LocalTime startTime;
 
-    @Column(name = "end_time", nullable = false, length = 50)
+    @Column(name = "end_time", nullable = false, length = 10)
     private LocalTime endTime;
 
-    @Column(name = "room_number", nullable = false, length = 50)
+    @Column(name = "room_number", nullable = false, length = 10)
     private String roomNumber;
 
     @ManyToOne
@@ -42,18 +48,12 @@ public class ScheduleEntity {
     public ScheduleEntity() {
     }
 
-    public ScheduleEntity(String subject, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime, String roomNumber) {
-        this.subject = subject;
-        this.dayOfWeek = dayOfWeek;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.roomNumber = roomNumber;
-    }
 
-    public ScheduleEntity(Long id, String subject, DayOfWeek dayOfWeek, LocalTime startTime, LocalTime endTime, String roomNumber, TeacherEntity teacher, SchoolClassEntity schoolClass) {
+    public ScheduleEntity(Long id, String subject, LocalDate date, LocalTime startTime, LocalTime endTime, String roomNumber, TeacherEntity teacher, SchoolClassEntity schoolClass) {
         this.id = id;
         this.subject = subject;
-        this.dayOfWeek = dayOfWeek;
+        this.date = date;
+        this.dayOfWeek = date.getDayOfWeek();
         this.startTime = startTime;
         this.endTime = endTime;
         this.roomNumber = roomNumber;
@@ -79,6 +79,14 @@ public class ScheduleEntity {
 
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     public void setDayOfWeek(DayOfWeek dayOfWeek) {
@@ -127,9 +135,10 @@ public class ScheduleEntity {
 
     @Override
     public String toString() {
-        return "Schedule{" +
+        return "ScheduleEntity{" +
                 "id=" + id +
                 ", subject='" + subject + '\'' +
+                ", date=" + date +
                 ", dayOfWeek=" + dayOfWeek +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
