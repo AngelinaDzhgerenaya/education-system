@@ -2,6 +2,7 @@ package org.example.educationsystem.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class SchoolClassEntity {
     private Long id;
 
     @Column(name = "class_name", nullable = false, length = 10)
+    @Pattern(
+            regexp = "^[A-Za-zА-Яа-я0-9]+$",
+            message = "Название класса должно содержать только буквы и цифры"
+    )
     private String className;
 
     @OneToMany(mappedBy = "schoolClass", cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)

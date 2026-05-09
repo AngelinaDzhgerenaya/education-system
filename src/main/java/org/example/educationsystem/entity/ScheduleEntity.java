@@ -2,6 +2,7 @@ package org.example.educationsystem.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.experimental.SuperBuilder;
 
 
@@ -18,6 +19,10 @@ public class ScheduleEntity {
     private Long id;
 
     @Column(name = "subject", nullable = false, length = 50)
+    @Pattern(
+            regexp = "^[А-Яа-я]+$",
+            message = "Урок должно состоять только из русского алфавита"
+    )
     private String subject;
 
     @Column(name = "date", nullable = false, length = 50)
@@ -34,6 +39,10 @@ public class ScheduleEntity {
     private LocalTime endTime;
 
     @Column(name = "room_number", nullable = false, length = 10)
+    @Pattern(
+            regexp = "^[A-Za-zА-Яа-я0-9]+$",
+            message = "Номер комнаты должен содержать только буквы и цифры"
+    )
     private String roomNumber;
 
     @ManyToOne

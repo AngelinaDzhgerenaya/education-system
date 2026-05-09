@@ -1,6 +1,7 @@
 package org.example.educationsystem.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
@@ -16,12 +17,24 @@ public class TeacherEntity {
     private Long id;
 
     @Column(name = "first_name", nullable = false, length = 50)
+    @Pattern(
+            regexp = "^[А-Яа-я]+$",
+            message = "Имя должно состоять только из русского алфавита"
+    )
     private String firstName;
 
     @Column(name = "middle_name", length = 50)
+    @Pattern(
+            regexp = "^[А-Яа-я]+$",
+            message = "Отчество должно состоять только из русского алфавита"
+    )
     private String middleName;
 
     @Column(name = "last_name", nullable = false, length = 50)
+    @Pattern(
+            regexp = "^[А-Яа-я]+$",
+            message = "Фамилия должна состоять только из русского алфавита"
+    )
     private String lastName;
 
     @OneToMany(mappedBy = "teacher" ,fetch = FetchType.LAZY)
