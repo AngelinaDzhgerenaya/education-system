@@ -16,9 +16,6 @@ import org.example.educationsystem.dto.response.SchoolClassResponse;
 import org.example.educationsystem.dto.response.TeacherResponse;
 import org.example.educationsystem.exception.ConflictException;
 import org.example.educationsystem.exception.NotFoundException;
-import org.example.educationsystem.repository.ScheduleRepository;
-import org.example.educationsystem.repository.SchoolClassRepository;
-import org.example.educationsystem.repository.TeacherRepository;
 import org.example.educationsystem.routes.EducationRoutes;
 import org.example.educationsystem.service.EducationService;
 import org.example.educationsystem.service.ScheduleService;
@@ -27,14 +24,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 @RestController
 @RequiredArgsConstructor
 public class EducationApiController {
-    private final TeacherRepository teacherRepository;
-    private final SchoolClassRepository schoolClassRepository;
 
     private final EducationService educationService;
     private final ScheduleService scheduleService;
