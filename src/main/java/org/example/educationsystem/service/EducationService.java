@@ -7,7 +7,6 @@ import org.example.educationsystem.dto.request.edit.EditSchoolClassRequest;
 import org.example.educationsystem.dto.request.edit.EditTeacherRequest;
 import org.example.educationsystem.dto.response.SchoolClassResponse;
 import org.example.educationsystem.dto.response.TeacherResponse;
-import org.example.educationsystem.entity.ScheduleEntity;
 import org.example.educationsystem.entity.SchoolClassEntity;
 import org.example.educationsystem.entity.TeacherEntity;
 import org.example.educationsystem.exception.ConflictException;

@@ -28,9 +28,6 @@ public class ScheduleEntity {
     @Column(name = "date", nullable = false, length = 50)
     private LocalDate date;
 
-    @Column(name = "day_of_week", nullable = false, length = 50)
-    @Enumerated(EnumType.STRING)
-    private DayOfWeek dayOfWeek;
 
     @Column(name = "start_time", nullable = false, length = 10)
     private LocalTime startTime;
@@ -62,7 +59,6 @@ public class ScheduleEntity {
         this.id = id;
         this.subject = subject;
         this.date = date;
-        this.dayOfWeek = date.getDayOfWeek();
         this.startTime = startTime;
         this.endTime = endTime;
         this.roomNumber = roomNumber;
@@ -86,9 +82,6 @@ public class ScheduleEntity {
         this.subject = subject;
     }
 
-    public DayOfWeek getDayOfWeek() {
-        return dayOfWeek;
-    }
 
     public LocalDate getDate() {
         return date;
@@ -98,9 +91,6 @@ public class ScheduleEntity {
         this.date = date;
     }
 
-    public void setDayOfWeek(DayOfWeek dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
 
     public LocalTime getStartTime() {
         return startTime;
@@ -148,7 +138,6 @@ public class ScheduleEntity {
                 "id=" + id +
                 ", subject='" + subject + '\'' +
                 ", date=" + date +
-                ", dayOfWeek=" + dayOfWeek +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", roomNumber='" + roomNumber + '\'' +

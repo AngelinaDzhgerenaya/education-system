@@ -219,7 +219,6 @@ public class Tests {
         ScheduleEntity schedule = new ScheduleEntity();
         schedule.setSubject("Математика");
         schedule.setDate(LocalDate.of(2026, 5, 9));
-        schedule.setDayOfWeek(LocalDate.of(2026, 5, 9).getDayOfWeek());
         schedule.setStartTime(LocalTime.of(9, 0));
         schedule.setEndTime(LocalTime.of(9, 40));
         schedule.setRoomNumber("101");

@@ -3,8 +3,6 @@ package org.example.educationsystem.service;
 import lombok.AllArgsConstructor;
 import org.example.educationsystem.dto.request.create.CreateScheduleRequest;
 import org.example.educationsystem.dto.request.edit.EditScheduleRequest;
-import org.example.educationsystem.dto.request.edit.EditSchoolClassRequest;
-import org.example.educationsystem.dto.request.edit.EditTeacherRequest;
 import org.example.educationsystem.dto.response.DayScheduleResponse;
 import org.example.educationsystem.dto.response.ScheduleResponse;
 import org.example.educationsystem.entity.ScheduleEntity;
@@ -21,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -43,7 +40,6 @@ public class ScheduleService {
         SchoolClassEntity schoolClass = schoolClassRepository.findById(request.getSchoolClassId()).orElseThrow(() ->
                         new NotFoundException("Класс не найден")
                 );
-        schedule.setDayOfWeek(dayOfWeek);
         schedule.setTeacher(teacher);
         schedule.setSchoolClass(schoolClass);
 
@@ -113,8 +109,6 @@ public class ScheduleService {
 
         if (request.getDate() != null) {
             schedule.setDate(request.getDate());
-            DayOfWeek dayOfWeek = request.getDate().getDayOfWeek();
-            schedule.setDayOfWeek(dayOfWeek);
         }
         if (request.getRoomNumber() != null) {
             schedule.setRoomNumber(request.getRoomNumber());
