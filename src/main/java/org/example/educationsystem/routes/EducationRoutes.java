@@ -14,11 +14,11 @@ public class EducationRoutes {
 
     public final static String SCHEDULECLASS = SCHOOLCLASSES + "/{id}" + "/schedule";
 
-    public final static String SCHEDULETECHER = TEACHERS + "/{id}" + "/schedule";
+    public final static String SCHEDULETEACHER = TEACHERS + "/{id}" + "/schedule";
 
-    public final static String SCHEDULECRETE = ROOT + "/schedule";
+    public final static String SCHEDULECREATE = ROOT + "/schedule";
 
-    public final static String SCHEDULEBYID = SCHEDULECRETE + "/{id}";
+    public final static String SCHEDULEBYID = SCHEDULECREATE + "/{id}";
 
 
     public final static  String INIT = ROOT +"/init";

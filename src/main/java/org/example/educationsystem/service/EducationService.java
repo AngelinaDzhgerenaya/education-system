@@ -65,7 +65,7 @@ public class EducationService {
         return TeacherResponse.of(teacherRepository.save(request.entity()));
     }
 
-    public List<TeacherResponse> TeacherList(int page, int size){
+    public List<TeacherResponse> teacherList(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
 
 
@@ -75,7 +75,7 @@ public class EducationService {
                 .collect(Collectors.toList());
     }
 
-    public List<SchoolClassResponse> SchoolClassList(int page, int size){
+    public List<SchoolClassResponse> schoolClassList(int page, int size){
         Pageable pageable = PageRequest.of(page, size);
 
         return schoolClassRepository.findAll()

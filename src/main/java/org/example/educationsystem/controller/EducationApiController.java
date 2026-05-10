@@ -54,7 +54,7 @@ public class EducationApiController {
     @GetMapping(EducationRoutes.TEACHERS)
     public List<TeacherResponse> teachers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
 
-        return educationService.TeacherList(page, size);
+        return educationService.teacherList(page, size);
     }
 
     @Operation(summary = "Изменить учителя")
@@ -75,7 +75,7 @@ public class EducationApiController {
     @GetMapping(EducationRoutes.SCHOOLCLASSES)
     public List<SchoolClassResponse> schoolClasses(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
 
-        return educationService.SchoolClassList(page, size);
+        return educationService.schoolClassList(page, size);
     }
 
     @Operation(summary = "Изменить класс")
@@ -87,7 +87,7 @@ public class EducationApiController {
 
     //SCHEDULE
     @Operation(summary = "Создать урок")
-    @PostMapping(EducationRoutes.SCHEDULECRETE)
+    @PostMapping(EducationRoutes.SCHEDULECREATE)
     public ScheduleResponse scheduleCreate(@Valid @RequestBody CreateScheduleRequest request) throws NotFoundException {
         return ScheduleResponse.of(scheduleService.create(request));
     }
@@ -99,7 +99,7 @@ public class EducationApiController {
     }
 
     @Operation(summary = "Вывести расписание на день для учителя")
-    @GetMapping(EducationRoutes.SCHEDULETECHER)
+    @GetMapping(EducationRoutes.SCHEDULETEACHER)
     public DayScheduleResponse scheduleTeacher(@PathVariable Long id, @RequestParam(defaultValue = "") LocalDate date, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) throws NotFoundException {
         return scheduleService.teacherSchedule(id, date, page, size);
     }
